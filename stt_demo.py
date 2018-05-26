@@ -2,11 +2,13 @@
 # Requires PyAudio and PySpeech.
  
 import speech_recognition as sr
-import os
+#import os
  
 # Record Audio
 r = sr.Recognizer()
-with sr.Microphone() as source:
+mic=sr.Microphone()
+
+with mic  as source:
     print("Say something!")
     audio = r.listen(source)
  
@@ -16,8 +18,8 @@ try:
     # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
     # instead of `r.recognize_google(audio)`
     print("You said: " + r.recognize_google(audio))
-    text = r.recognize_google(audio)
-    os.system(text)
+    #text = r.recognize_google(audio)
+    #os.system(text)
 except sr.UnknownValueError:
     print("Google Speech Recognition could not understand audio")
 except sr.RequestError as e:
